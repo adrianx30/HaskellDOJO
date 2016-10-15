@@ -1,0 +1,24 @@
+#########################    Comandos para subir al heroku ########################################
+
+-- Iniciar el repositorio
+git init 
+
+-- Crear aplicacion heroku
+heroku create
+
+-- Definir el buildpack
+heroku buildpacks:set https://github.com/mietek/haskell-on-heroku
+
+-- Instalar dependencias en heroku
+heroku config:set HALCYON_NO_BUILD_DEPENDENCIES=0
+
+-- Subir a heroku
+git add .
+git commit -m "Inicio"
+git push heroku master
+
+-- Activar el proceso web
+heroku ps:scale web=1
+
+--Abrir el servicio
+heroku open
